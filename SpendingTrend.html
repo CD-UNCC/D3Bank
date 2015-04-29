@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+ <link type="text/css" href="http://mbostock.github.io/d3/style.css" rel="stylesheet" />
+<link type="text/css" href="example.css" rel="stylesheet" />
+</head>
+<style>
+
+
+body{
+
+background: linear-gradient(to right,  #8A0808 0%, #8A0808 70%, black 50%, black 100%);
+}
+#wellsFargIcon{
+  width: 50px;
+  height: 50px;
+}
+
+#gantt{
+	position: absolute;
+	left:300px;
+}
+</style>
+<body>
+	<div id="gantt">
+ 
+	<button type="button" onclick="addTask()">Add Task</button>
+	<button type="button" onclick="removeTask()">Remove Task</button>
+	<button type="button" onclick="changeTimeDomain('1hr')">1 HR</button>
+	<button type="button" onclick="changeTimeDomain('3hr')">3 HR</button>
+	<button type="button" onclick="changeTimeDomain('6hr')">6 HR</button>
+        <button type="button" onclick="changeTimeDomain('1day')">1 DAY</button>
+        <button type="button" onclick="changeTimeDomain('1week')">1 WEEK</button>
+</div>
+<div id = "wellsFargIcon">
+<img src="http://gpecpartners.com/sites/default/files/WF_Logo-jpg-300x300.jpg", height="100", width="100" >
+</div>
+
+</div>
+s
+
+</body>
+</html>
+ <script type="text/javascript" src="http://d3js.org/d3.v3.min.js"></script>
+	<script type="text/javascript" src="http://static.mentful.com/gantt-chart-d3v2.js"></script>
+	<script type="text/javascript" src="example3.js"></script>
