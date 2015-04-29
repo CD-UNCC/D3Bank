@@ -2,100 +2,287 @@
 <html>
 <meta charset="utf-8">
 <style>
-
-body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
- 
- 
-  
+body {  
   background: linear-gradient(to right,  #8A0808 0%, #8A0808 70%, black 50%, black 100%);
 }
-#wellsFargIcon{
-	width: 50px;
-	height: 50px;
-}
-
+ 
 form {
   position: absolute;
-  right: 200px;
-  top: 230px;
+  right: 10px;
+  top: 10px;
 }
-
+ 
 .node {
-  border: solid 1px white;
-  font: 10px sans-serif;
-  line-height: 12px;
-  overflow: hidden;
-  position: absolute;
-  text-indent: 2px;
+    border: solid 1px white;
+    line-height: 0.95;
+    overflow: hidden;
+    position: absolute;
+    border-radius: 6px;
+    background-image: -webkit-linear-gradient(top, hsla(0,0%,100%,.3), hsla(0,0%,100%,0));
+    background-image:    -moz-linear-gradient(top, hsla(0,0%,100%,.3), hsla(0,0%,100%,0));
+    background-image:     -ms-linear-gradient(top, hsla(0,0%,100%,.3), hsla(0,0%,100%,0));
+    background-image:      -o-linear-gradient(top, hsla(0,0%,100%,.3), hsla(0,0%,100%,0));
+    background-image:         linear-gradient(top, hsla(0,0%,100%,.3), hsla(0,0%,100%,0)); 
+    text-shadow: -1px -1px 2px hsla(0,0%,100%,0.25),
+        -1px -1px 2px hsla(0,0%,100%,0.25),
+        -1px 1px 2px hsla(0,0%,100%,0.25),
+        1px -1px 2px hsla(0,0%,100%,0.25),
+        -1px 0px 2px hsla(0,0%,100%,0.25),
+        1px 0px 2px hsla(0,0%,100%,0.25);
 }
 
+.node div {
+   padding: 6px 4%;
+}
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
 
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
 </style>
 
 <body>
 <div id = "wellsFargIcon">
 <img src="http://gpecpartners.com/sites/default/files/WF_Logo-jpg-300x300.jpg", height="200", width="200" >
 </div>
-<form>
-  <label><input type="radio" name="mode" value="size" checked> Size</label>
-  <label><input type="radio" name="mode" value="count"> Count</label>
-</form>
 <script src="http://d3js.org/d3.v3.min.js"></script>
+<script src="index.js"></script>
 <script>
-
-var margin = {top: 200, right: 0, bottom: 0, left: 150},
-    width = 1060 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
-
-var color = d3.scale.category20c();
+var tree = {
+  name: "tree",
+  children: [
+  {
+    "name":"Wells Fargo Credit Card Payments",
+    "size":13
+  },
+  {
+    "name":"Postage/Shipping",
+    "size":1
+  },
+  {
+    "name":"Wells Fargo ATM",
+    "size":4
+  },
+  {
+    "name":"Transfers to Savings",
+    "size":333
+  },
+  {
+    "name":"Toys/Hobbies",
+    "size":4
+  },
+  {
+    "name":"Student Loan Payments",
+    "size":1
+  },
+  {
+    "name":"Sporting Goods",
+    "size":1
+  },
+  {
+    "name":"Restaurants",
+    "size":141
+  },
+  {
+    "name":"Rental Car",
+    "size":13
+  },
+  {
+    "name":"Phone/Internet",
+    "size":3
+  },
+  {
+    "name":"Pharmacy",
+    "size":1
+  },
+  {
+    "name":"Parking/Tolls",
+    "size":2
+  },
+  {
+    "name":"Other Shopping",
+    "size":18
+  },
+  {
+    "name":"Other Miscellaneous",
+    "size":3
+  },
+  {
+    "name":"Other Insurance/Financial",
+    "size":12
+  },
+  {
+    "name":"Other Entertainment",
+    "size":117
+  },
+  {
+    "name":"Other Business/Office",
+    "size":10
+  },
+  {
+    "name":"Non-Wells Fargo Credit Card Payments",
+    "size":1
+  },
+  {
+    "name":"Non-Wells Fargo ATM",
+    "size":6
+  },
+  {
+    "name":"Music",
+    "size":26
+  },
+  {
+    "name":"Movies",
+    "size":6
+  },
+  {
+    "name":"Maintenance/Repair",
+    "size":2
+  },
+  {
+    "name":"Lodging",
+    "size":5
+  },
+  {
+    "name":"Home Improvements",
+    "size":4
+  },
+  {
+    "name":"Groceries",
+    "size":72
+  },
+  {
+    "name":"Gifts",
+    "size":3
+  },
+  {
+    "name":"Gasoline",
+    "size":119
+  },
+  {
+    "name":"Gas/Electric",
+    "size":5
+  },
+  {
+    "name":"Fees/Service Charges/Dues",
+    "size":3
+  },
+  {
+    "name":"Fast Food",
+    "size":424
+  },
+  {
+    "name":"Electronics/Software",
+    "size":13
+  },
+  {
+    "name":"Electronic Payments",
+    "size":8
+  },
+  {
+    "name":"Education",
+    "size":10
+  },
+  {
+    "name":"Dry Cleaning/Laundry",
+    "size":2
+  },
+  {
+    "name":"Doctor/Hospital",
+    "size":6
+  },
+  {
+    "name":"Clothing/Accessories",
+    "size":1
+  },
+  {
+    "name":"Checks Written",
+    "size":1
+  },
+  {
+    "name":"Charity/Community Org",
+    "size":1
+  },
+  {
+    "name":"Cash Advances from Wells Fargo Credit Card",
+    "size":8
+  },
+  {
+    "name":"Cable/Satellite TV",
+    "size":6
+  },
+  {
+    "name":"Books/Magazines/Newspapers",
+    "size":114
+  },
+  {
+    "name":"Bars/Alcohol",
+    "size":101
+  },
+  {
+    "name":"Arts",
+    "size":7
+  }
+]
+};
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d) {
+    return "<strong>Number of Purchases in this range:</strong> <span style='color:red'>" + d.size + "</span>";
+  }); 
+var width = innerWidth-40,
+    height = innerHeight-40,
+    color = d3.scale.category20c(),
+    div = d3.select("body").append("div")
+       .style("position", "relative");
 
 var treemap = d3.layout.treemap()
     .size([width, height])
     .sticky(true)
-    .value(function(d) { return d.size; });
-
-var div = d3.select("body").append("div")
-    .style("position", "relative")
-    .style("width", (width + margin.left + margin.right) + "px")
-    .style("height", (height + margin.top + margin.bottom) + "px")
-    .style("left", margin.left + "px")
-    .style("top", margin.top + "px");
-
-d3.csv("banking.csv", function(error, root) {
-  var node = div.datum(root).selectAll(".node")
+    .value(function(d) { return d.size; })
+var node = div.datum(tree).selectAll(".node")
       .data(treemap.nodes)
       .enter().append("div")
+      .on('mouseover', tip.show)
+      .on('mouseout', tip.hide)
       .attr("class", "node")
       .call(position)
-      .style("background", function(d) { return d.children ? color(d.name) : null; })
+      .style("background-color", function(d) {
+          return d.name == 'tree' ? '#fff' : color(d.name); })
+      .append('div')
+      .style("font-size", function(d) {
+          // compute font size based on sqrt(area)
+          return Math.max(12, 0.18*Math.sqrt(d.area))+'px'; })
       .text(function(d) { return d.children ? null : d.name; });
-
-  d3.selectAll("input").on("change", function change() {
-    var value = this.value === "count"
-        ? function() { return 1; }
-        : function(d) { return d.size; };
-
-    node
-        .data(treemap.value(value).nodes)
-      .transition()
-        .duration(1500)
-        .call(position);
-  });
-});
-
+ 
 function position() {
   this.style("left", function(d) { return d.x + "px"; })
       .style("top", function(d) { return d.y + "px"; })
       .style("width", function(d) { return Math.max(0, d.dx - 1) + "px"; })
       .style("height", function(d) { return Math.max(0, d.dy - 1) + "px"; });
 }
-
 </script>
-<svg height= "3" width ="1265">
-<line x1="0" y1="2" x2="1250" y2="2" style="stroke:#FFBF00;stroke-width:2" />
-
-</svg>
-
 </body>
 </html>
