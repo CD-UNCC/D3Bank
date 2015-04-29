@@ -35,7 +35,32 @@ background: linear-gradient(to right,  #8A0808 0%, #8A0808 70%, black 50%, black
 .x.axis path {
   display: none;
 }
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
 
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
 </style>
 <body>
 <div id = "wellsFargIcon">
@@ -43,16 +68,16 @@ background: linear-gradient(to right,  #8A0808 0%, #8A0808 70%, black 50%, black
 </div>
 
 <script src="http://d3js.org/d3.v3.min.js"></script>
-
+<script src="index.js"></script>
 <div id = "moveBarChart">
 <script>
 
-var margin = {top: 100, right: 0, bottom: 50, left: 300},
+var margin = {top: 100, right: 50, bottom: 50, left: 100},
     width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+    height = 600 - margin.top - margin.bottom;
 
 var x = d3.scale.ordinal()
-    .rangeRoundBands([0, width], .1);
+    .rangeRoundBands([0, width],.2);
 
 var y = d3.scale.linear()
     .range([height, 0]);
@@ -63,19 +88,23 @@ var xAxis = d3.svg.axis()
 
 var yAxis = d3.svg.axis()
     .scale(y)
-    .orient("left")
-    .ticks(10, "%");
-
+    .orient("left");
+    //;
+var tip = d3.tip()
+  .attr('class', 'd3-tip')
+  .offset([-10, 0])
+  .html(function(d) {
+    return "<strong>Number of Purchases in this range:</strong> <span style='color:red'>" + d.Amount + "</span>";
+  })
 var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
   .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-d3.tsv("data.tsv", type, function(error, data) {
-  x.domain(data.map(function(d) { return d.letter; }));
-  y.domain([0, d3.max(data, function(d) { return d.frequency; })]);
-
+svg.call(tip);
+d3.csv("hist.csv", type, function(error, data) {
+  x.domain(data.map(function(d) { return d.Bin; }));
+  y.domain([0, d3.max(data, function(d) { return d.Amount; })]);
   svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
@@ -84,26 +113,28 @@ d3.tsv("data.tsv", type, function(error, data) {
   svg.append("g")
       .attr("class", "y axis")
       .call(yAxis)
-    .append("text")
+      .append("text")
       .attr("transform", "rotate(-90)")
       .attr("y", 6)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("Frequency");
+      .text("Number of Purchases");
 
   svg.selectAll(".bar")
       .data(data)
-    .enter().append("rect")
+      .enter().append("rect")
       .attr("class", "bar")
-      .attr("x", function(d) { return x(d.letter); })
+      .attr("x", function(d) { return x(d.Bin); })
       .attr("width", x.rangeBand())
-      .attr("y", function(d) { return y(d.frequency); })
-      .attr("height", function(d) { return height - y(d.frequency); });
+      .attr("y", function(d) { return y(d.Amount); })
+      .attr("height", function(d) { return height - y(d.Amount); })
+      .on('mouseover', tip.show)
+      .on('mouseout', tip.hide)
 
 });
 
 function type(d) {
-  d.frequency = +d.frequency;
+  d.Amount = +d.Amount;
   return d;
 }
 
