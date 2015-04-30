@@ -20,12 +20,53 @@
           defaultFill: '#f0af0a',
          
         },
-         popupTemplate: function(geo, data) {
-         return "<div class='hoverinfo'>It is " + data.name + "</div>";
-       }
-      })
+         geographyConfig: {
+         popupTemplate: function(geography, data) {
+          
+          
+          if(geography.properties.name == "North Carolina"){
+            var y = "</b>"+"<br><br>"+"<b>"+data.charlotte +"</b><br>"+"Average Spent:"+data.spent1;
+          var x = "<b>"+data.raleigh+"</b>"+"<br>"+"Average Spent:"+data.spent2;
+          var z = "<b>"+data.concord+"</b>"+"<br>"+"Average Spent:"+data.spent3;
+          var a = "<b>"+data.huntersville+"</b>"+"<br>"+"Average Spent:"+data.spent4;
+          return "<div class='hoverinfo'>" +"<b>"+ geography.properties.name+ y+"<br>"+  x +"<br>"+z+"<br>"+a
+        }
+        if(geography.properties.name == "Virginia"){
+          var b = "</b>"+"<br><br>"+"<b>"+data.fairfax +"</b><br>"+"Average Spent:"+data.spent5;
+          return "<div class='hoverinfo'>" +"<b>"+ geography.properties.name +b
+        }
+         return "<div class='hoverinfo'>" +"<b>"+ geography.properties.name
+         
+       
+       },
+     },
+      data:{
+  
+  "NC": {
+      "charlotte":"Charlotte",
+      "raleigh":"Raleigh",
+      "concord":"Concord",
+      "huntersville":"Huntersville",
+      "spent1":"$42.94",
+      "spent3":"$90.92",
+      "spent2":"$18.61",
+      "spent4":"$14.64"
+
+  },
+
+  "VA":{
+
+      "fairfax":"FairFax",
+       "spent5":"$91.22" 
+
+
+  }
+  
+}
       
+      });
       
+      map.labels();
       
       
        //bubbles, custom popup on hover template
