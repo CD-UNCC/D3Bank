@@ -37,6 +37,7 @@ background: linear-gradient(to right,  #8A0808 0%, #8A0808 70%, black 50%, black
         projection: 'alberUsa',
         height: 500,
         fills: {
+           "color":"#FE2E2E",
           defaultFill: '#f0af0a',
          
         },
@@ -45,24 +46,30 @@ background: linear-gradient(to right,  #8A0808 0%, #8A0808 70%, black 50%, black
           
           
           if(geography.properties.name == "North Carolina"){
-            var y = "</b>"+"<br><br>"+"<b>"+data.charlotte +"</b><br>"+"Average Spent:"+data.spent1;
-          var x = "<b>"+data.raleigh+"</b>"+"<br>"+"Average Spent:"+data.spent2;
-          var z = "<b>"+data.concord+"</b>"+"<br>"+"Average Spent:"+data.spent3;
-          var a = "<b>"+data.huntersville+"</b>"+"<br>"+"Average Spent:"+data.spent4;
+           
+            var y = "</b>"+"<br><br>"+"<b>"+data.charlotte +"</b><br>"+"Average Spent:"+data.spent1+"<br>"+"Total:"+data.total1;
+          var x = "<b>"+data.raleigh+"</b>"+"<br>"+"Average Spent:"+data.spent2+"<br>"+"Total:"+data.total2;
+          var z = "<b>"+data.concord+"</b>"+"<br>"+"Average Spent:"+data.spent3+"<br>"+"Total:"+data.total3;
+          var a = "<b>"+data.huntersville+"</b>"+"<br>"+"Average Spent:"+data.spent4+"<br>"+"Total:"+data.total4;
           return "<div class='hoverinfo'>" +"<b>"+ geography.properties.name+ y+"<br>"+  x +"<br>"+z+"<br>"+a
         }
         if(geography.properties.name == "Virginia"){
-          var b = "</b>"+"<br><br>"+"<b>"+data.fairfax +"</b><br>"+"Average Spent:"+data.spent5;
+          var b = "</b>"+"<br><br>"+"<b>"+data.fairfax +"</b><br>"+"Average Spent:"+data.spent5+"<br>"+"Total:"+data.total5;
           return "<div class='hoverinfo'>" +"<b>"+ geography.properties.name +b
         }
-         return "<div class='hoverinfo'>" +"<b>"+ geography.properties.name
+        if(geography.properties.name == "Florida"){
+          var b = "</b>"+"<br><br>"+"<b>"+data.fort +"</b><br>"+"Average Spent:"+data.spent6+"<br>"+"Total:"+data.total6;
+          return "<div class='hoverinfo'>" +"<b>"+ geography.properties.name +b
+        }
+         return "<div class='hoverinfo'>"+"<b>"+ geography.properties.name
          
        
        },
      },
       data:{
   
-  "NC": {
+ "NC": {
+        "fillKey":"color",
       "charlotte":"Charlotte",
       "raleigh":"Raleigh",
       "concord":"Concord",
@@ -70,15 +77,26 @@ background: linear-gradient(to right,  #8A0808 0%, #8A0808 70%, black 50%, black
       "spent1":"$42.94",
       "spent3":"$90.92",
       "spent2":"$18.61",
-      "spent4":"$14.64"
+      "spent4":"$14.64",
+      "total1":"$2343.96",
+      "total2":"$181.82",
+      "total3":"$90.92",
+      "total4":"$14.64"
 
   },
 
   "VA":{
-
+      "fillKey":"color",
       "fairfax":"FairFax",
-       "spent5":"$91.22" 
+       "spent5":"$91.22", 
+       "total5":"$1136.87"
 
+  },
+  "FL":{
+      "fillKey":"color",
+      "fort":"Fort Lauderda",
+       "spent6":"$485.42", 
+       "total6":"$485.42"
 
   }
   
