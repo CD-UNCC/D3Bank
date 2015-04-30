@@ -55,6 +55,7 @@ svg.nvd3-svg {
 
   font-family: Arial;
   font-size: 13px;
+
   text-align: left;
   pointer-events: none;
 
@@ -125,6 +126,7 @@ svg.nvd3-svg {
 
 .nvtooltip table td.key {
   font-weight:normal;
+
 }
 .nvtooltip table td.value {
   text-align: right;
@@ -157,6 +159,7 @@ svg.nvd3-svg {
 
 .nvd3 text {
   font: normal 12px Arial;
+
 }
 
 .nvd3 .title {
