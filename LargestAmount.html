@@ -25,13 +25,12 @@ background: linear-gradient(to right,  #8A0808 0%, #8A0808 70%, black 50%, black
 <body>
 	<script src="http://d3js.org/d3.v3.min.js"></script>
   <script src="http://d3js.org/topojson.v1.min.js"></script>
-  <!-- I recommend you host this file on your own, since this will change without warning -->
-  <script src="http://datamaps.github.io/scripts/datamaps.usa.min.js?v=1"></script>
+  <script src="datamaps.usa.min.js"></script>
 <div id = "wellsFargIcon">
 <img src="http://gpecpartners.com/sites/default/files/WF_Logo-jpg-300x300.jpg", height="200", width="200" onclick = "back()" >
 </div>
 
- <div id="container1" style="position: relative; width: 80%; max-height: 3px;"></div>
+ <div id="container1" style="position: relative; width: 80%; max-height: 300px;"></div>
  
      
      <script>
@@ -40,7 +39,7 @@ background: linear-gradient(to right,  #8A0808 0%, #8A0808 70%, black 50%, black
         scope: 'usa',
         element: document.getElementById('container1'),
         projection: 'alberUsa',
-        height: 500,
+        height: 800,
          done: function(datamap) {
         datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
            if(geography.properties.name =="North Carolina"){
@@ -60,7 +59,7 @@ background: linear-gradient(to right,  #8A0808 0%, #8A0808 70%, black 50%, black
          
         },
        
-       geographyConfig: {
+        geographyConfig: {
         highlightOnHover: true,
         highlightFillColor: '#FE2E2E',
          highlightBorderColor: 'black',
@@ -92,33 +91,33 @@ background: linear-gradient(to right,  #8A0808 0%, #8A0808 70%, black 50%, black
   
  "NC": {
         "fillKey":"color",
-      "charlotte":"Charlotte",
-      "raleigh":"Raleigh",
-      "concord":"Concord",
-      "huntersville":"Huntersville",
-      "spent1":"$42.94",
-      "spent3":"$90.92",
-      "spent2":"$18.61",
-      "spent4":"$14.64",
-      "total1":"$2343.96",
-      "total2":"$181.82",
-      "total3":"$90.92",
-      "total4":"$14.64"
+        "charlotte":"Charlotte",
+        "raleigh":"Raleigh",
+        "concord":"Concord",
+        "huntersville":"Huntersville",
+        "spent1":"$42.94",
+        "spent3":"$90.92",
+        "spent2":"$18.61",
+        "spent4":"$14.64",
+        "total1":"$2343.96",
+        "total2":"$181.82",
+        "total3":"$90.92",
+        "total4":"$14.64"
 
   },
 
   "VA":{
-      "fillKey":"color",
-      "fairfax":"FairFax",
-       "spent5":"$91.22", 
-       "total5":"$1136.87"
+        "fillKey":"color",
+        "fairfax":"FairFax",
+        "spent5":"$91.22", 
+        "total5":"$1136.87"
 
   },
   "FL":{
       "fillKey":"color",
       "fort":"Fort Lauderda",
-       "spent6":"$485.42", 
-       "total6":"$485.42"
+      "spent6":"$485.42", 
+      "total6":"$485.42"
 
   }
   
@@ -128,11 +127,11 @@ background: linear-gradient(to right,  #8A0808 0%, #8A0808 70%, black 50%, black
       
       map.labels();
       
- function back(){
+  function back(){
   
   window.location = "index.html";
 }
-     </script>
+</script>
 
 
 
