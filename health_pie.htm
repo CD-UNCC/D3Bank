@@ -45,7 +45,7 @@ background: linear-gradient(to right,  #8A0808 0%, #8A0808 70%, black 50%, black
 <body>
 	
 <div id = "wellsFargIcon">
-<img src="http://gpecpartners.com/sites/default/files/WF_Logo-jpg-300x300.jpg", height="200", width="200" onclick = "back()" >
+<img src="http://gpecpartners.com/sites/default/files/WF_Logo-jpg-300x300.jpg", height="200", width="200" >
 </div>
 
 </div>
@@ -55,9 +55,10 @@ background: linear-gradient(to right,  #8A0808 0%, #8A0808 70%, black 50%, black
 
 <script>
     var testdata2 = [
-        {key: "Groceries", y: 3768},
-        {key: "Fast Food", y: 3314},
-        {key: "Restaurants", y: 2835},       
+        {key: "Bars/Alcohol", y: 3100},
+        {key: "Doctor / Hospital", y: 898},
+        {key: "Pharmacy", y: 12.31},     
+        {key: "Insurance", y: 285}  
     ];
   
     var height = 0;
@@ -68,16 +69,13 @@ background: linear-gradient(to right,  #8A0808 0%, #8A0808 70%, black 50%, black
             .x(function(d) { return d.key})
             .y(function(d) { return d.y })
             .width(width)
-            .height(height)
-            ;
-
+            .height(height);
 
         d3.select("#test1")
             .datum(testdata2)
             .transition().duration(1200)
             .attr('width', width)
             .attr('height', height)
-
             .call(chart);
 
         return chart;
@@ -85,10 +83,8 @@ background: linear-gradient(to right,  #8A0808 0%, #8A0808 70%, black 50%, black
 
     nv.addGraph(function() {
         var chart = nv.models.pieChart()
-            
             .x(function(d) { return d.key })
             .y(function(d) { return d.y })
-            
             //.labelThreshold(.08)
             //.showLabels(false)
             .color(d3.scale.category20().range().slice(8))
@@ -98,7 +94,6 @@ background: linear-gradient(to right,  #8A0808 0%, #8A0808 70%, black 50%, black
                         + e.color + '"><strong>Yo, the value is</strong></h3>'
                         + '<p style="padding:5px;">' +  y + '</p>';
             })
-
             .width(width)
             .height(height);
         var is_disabled = false;
@@ -109,10 +104,7 @@ background: linear-gradient(to right,  #8A0808 0%, #8A0808 70%, black 50%, black
 
         return chart;
     });
-function back(){
-  
-  window.location = "index.html";
-}
+
 </script>
 </div>
 <svg >
