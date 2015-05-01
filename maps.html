@@ -16,21 +16,20 @@
         element: document.getElementById('container1'),
         projection: 'alberUsa',
         height: 500,
-        highlightOnHover: true,
-        highlightFillColor: '#FE2E2E',
+        
         fills: {
           "color":"#FE2E2E",
           defaultFill: '#f0af0a',
          
         },
          geographyConfig: {
-
+          highlightOnHover: true,
+        highlightFillColor: '#FE2E2E',
+         highlightBorderColor: 'black',
          popupTemplate: function(geography, data) {
           
           
-          $(geography.properties.name).click(function(){
-               window.open("http://www.w3schools.com/jquery/jquery_events.asp")
-            }); 
+          
           
           if(geography.properties.name == "North Carolina"){
            

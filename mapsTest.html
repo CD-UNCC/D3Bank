@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<body>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="http://d3js.org/topojson.v1.min.js"></script>
+  <!-- I recommend you host this file on your own, since this will change without warning -->
+  <script src="http://datamaps.github.io/scripts/datamaps.usa.min.js?v=1"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  <div id="container1" style="position: relative; width: 80%; max-height: 450px;"></div>
+ 
+     
+     <script>
+       //basic map config with custom fills, mercator projection
+    var map = new Datamap({
+        scope: 'usa',
+        element: document.getElementById('container1'),
+        projection: 'alberUsa',
+         height: 500, //if not null, datamaps will grab the height of 'element'
+    width: null, //if not null, datamaps will grab the width of 'element'
+    done: function(datamap) {
+        datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
+           if(geography.properties.name =="North Carolina"){
+            window.open("http://stackoverflow.com/questions/20576229/an-example-of-using-data-map-in-haskell");
+           }
+        });
+    }, //callback when the map is done drawing
+    fills: {
+      defaultFill: '#ABDDA4' //the keys in this object map to the "fillKey" of [data] or [bubbles]
+    },
+    dataType: 'json', //for use with dataUrl, currently 'json' or 'csv'. CSV should have an `id` column
+    dataUrl: null, //if not null, datamaps will attempt to fetch this based on dataType ( default: json )
+    geographyConfig: {
+        dataUrl: null, //if not null, datamaps will fetch the map JSON (currently only supports topojson)
+        hideAntarctica: true,
+        borderWidth: 1,
+        borderColor: 'black',
+        popupTemplate: function(geography, data) { //this function should just return a string
+          return '<div class="hoverinfo"><strong>' + geography.properties.name + '</strong></div>';
+        },
+        popupOnHover: true, //disable the popup while hovering
+        highlightOnHover: true,
+        highlightFillColor: 'black',
+        highlightBorderColor: 'rgba(250, 15, 160, 0.2)',
+        highlightBorderWidth: 2
+    },
+    bubblesConfig: {
+        borderWidth: 2,
+        borderColor: '#FFFFFF',
+        popupOnHover: true,
+        popupTemplate: function(geography, data) {
+          return '<div class="hoverinfo"><strong>' + data.name + '</strong></div>';
+        },
+        fillOpacity: 0.75,
+        highlightOnHover: true,
+        highlightFillColor: '#FC8D59',
+        highlightBorderColor: 'rgba(250, 15, 160, 0.2)',
+        highlightBorderWidth: 2,
+        highlightFillOpacity: 0.85
+    },
+    arcConfig: {
+      strokeColor: '#DD1C77',
+      strokeWidth: 1,
+      arcSharpness: 1,
+      animationSpeed: 600
+    }
+      });
+     </script>
+
+</body>
+</html>

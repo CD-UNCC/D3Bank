@@ -71,7 +71,7 @@ background: linear-gradient(to right,  #8A0808 0%, #8A0808 70%, black 50%, black
 </style>
 <body>
 <div id = "wellsFargIcon">
-<img src="http://gpecpartners.com/sites/default/files/WF_Logo-jpg-300x300.jpg", height="200", width="200" >
+<img src="http://gpecpartners.com/sites/default/files/WF_Logo-jpg-300x300.jpg", height="200", width="200" onclick = "back()" >
 </div>
 
 <script src="http://d3js.org/d3.v3.min.js"></script>
@@ -144,6 +144,10 @@ d3.csv("hist.csv", type, function(error, data) {
 function type(d) {
   d.Amount = +d.Amount;
   return d;
+}
+function back(){
+  
+  window.location = "index.html";
 }
 
 </script>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style type="text/css">
+ 
+
+#viz{
+  position: absolute;
+  top:100px;
+  left:65px;
+  right:5px;
+
+}
+#title{
+   position: absolute;
+   left: 480px;
+
+}
+#logo{
+  position: absolute;
+  left: 65px;
+}
+
+</style>
+<body>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+
+  <!-- I recommend you host this file on your own, since this will change without warning -->
+<div id = "logo">
+<img src = "http://zookeeper.com/wp-content/uploads/2012/07/zookeeper-clients-wells-fargo-logo1.png", height="80", width="80" onclick = "back()" ></img>
+</div>
+<div id = "title">
+  <h1 >Virginia Statement</h3>
+</div>
+ 
+     <div id = "viz"></div>
+     <script>
+      
+     
+       //bubbles, custom popup on hover template
+    
+    d3.text("VA.csv", function(datasetText) {
+
+var parsedCSV = d3.csv.parseRows(datasetText);
+
+var sampleHTML = d3.select("#viz")
+    .append("table")
+    .style("border-collapse", "collapse")
+    .style("border", "2px black solid")
+
+    .selectAll("tr")
+    .data(parsedCSV)
+    .enter().append("tr")
+
+    .selectAll("td")
+    .data(function(d){return d;})
+    .enter().append("td")
+    .style("border", "1px black solid")
+    .style("padding", "5px")
+    .on("mouseover", function(){d3.select(this).style("background-color", "#FFBF00")})
+    .on("mouseout", function(){d3.select(this).style("background-color", "white")})
+    .text(function(d){return d;})
+    .style("font-size", "12px")
+    
+    
+    
+  
+ });
+
+    function back(){
+  
+  window.location = "LargestAmount.html";
+}
+     </script>
+
+</body>

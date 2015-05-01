@@ -28,7 +28,7 @@ background: linear-gradient(to right,  #8A0808 0%, #8A0808 70%, black 50%, black
   <!-- I recommend you host this file on your own, since this will change without warning -->
   <script src="http://datamaps.github.io/scripts/datamaps.usa.min.js?v=1"></script>
 <div id = "wellsFargIcon">
-<img src="http://gpecpartners.com/sites/default/files/WF_Logo-jpg-300x300.jpg", height="200", width="200" >
+<img src="http://gpecpartners.com/sites/default/files/WF_Logo-jpg-300x300.jpg", height="200", width="200" onclick = "back()" >
 </div>
 
  <div id="container1" style="position: relative; width: 80%; max-height: 3px;"></div>
@@ -41,12 +41,29 @@ background: linear-gradient(to right,  #8A0808 0%, #8A0808 70%, black 50%, black
         element: document.getElementById('container1'),
         projection: 'alberUsa',
         height: 500,
+         done: function(datamap) {
+        datamap.svg.selectAll('.datamaps-subunit').on('click', function(geography) {
+           if(geography.properties.name =="North Carolina"){
+            window.location= "NCStatement.html";
+           }
+           if(geography.properties.name =="Virginia"){
+            window.location= "VAStatement.html";
+           }
+           if(geography.properties.name =="Florida"){
+            window.location = "FLStatement.html";
+           }
+        });
+      },
         fills: {
            "color":"#FE2E2E",
           defaultFill: '#f0af0a',
          
         },
+       
        geographyConfig: {
+        highlightOnHover: true,
+        highlightFillColor: '#FE2E2E',
+         highlightBorderColor: 'black',
          popupTemplate: function(geography, data) {
           
           
@@ -111,7 +128,10 @@ background: linear-gradient(to right,  #8A0808 0%, #8A0808 70%, black 50%, black
       
       map.labels();
       
- 
+ function back(){
+  
+  window.location = "index.html";
+}
      </script>
 
 

@@ -70,7 +70,7 @@ form {
 
 <body>
 <div id = "wellsFargIcon">
-<img src="http://gpecpartners.com/sites/default/files/WF_Logo-jpg-300x300.jpg", height="200", width="200" >
+<img src="http://gpecpartners.com/sites/default/files/WF_Logo-jpg-300x300.jpg", height="200", width="200" onclick = "back()">
 </div>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="index.js"></script>
@@ -288,6 +288,10 @@ function position() {
       .style("top", function(d) { return d.y - 100 + "px"; })
       .style("width", function(d) { return Math.max(0, d.dx - 1) + "px"; })
       .style("height", function(d) { return Math.max(0, d.dy - 1) + "px"; });
+}
+function back(){
+  
+  window.location = "index.html";
 }
 </script>
 <svg height= "400" width ="1280">
