@@ -15,7 +15,7 @@ html, body {
             width: 100%;
         }
 body{
-	background: linear-gradient(to right,  #8A0808 0%, #8A0808 70%, black 50%, black 100%);
+	background: #8A0808;
 
 }
 #wellsfargoIcon{
@@ -49,7 +49,7 @@ body{
  
 
  <text id = "avgText" x ="595" y = "180" fill = "black"font-family = "Trocchi">Purchase</text>
- <text id = "avgText1" x ="595" y = "220" fill = "black"font-family = "Trocchi">Frequencies</text>
+ <text id = "avgText1" x ="583" y = "200" fill = "black"font-family = "Trocchi">Frequencies</text>
 
  <text id = "amoText" x = "335" y = "330" fill ="black"font-family = "Trocchi">What do</text>
  <text id = "amoText1" x = "335" y = "350" fill ="black"font-family = "Trocchi">you buy</text>
@@ -84,7 +84,7 @@ body{
 var AVGCircle = d3.select("#avgCircle");
 var AVGText = d3.select("#avgText");
 var AVGText1 = d3.select("#avgText1");
-AVGCircle.attr("r", "70");
+AVGCircle.attr("r", "50");
 AVGCircle.on("mouseover", AvgMouse);
 AVGText.on("mouseover",AvgMouse);
 AVGText1.on("mouseover",AvgMouse);
@@ -102,11 +102,11 @@ window.location = "AveragePurchase.html";
 }
 
 function AvgMouse(){
-AVGCircle.transition().duration(200).attr("r", "90");
+AVGCircle.transition().duration(200).attr("r", "70");
 }
 
 function AvgOut(){
-	AVGCircle.transition().duration(500).attr("r", "70");
+	AVGCircle.transition().duration(500).attr("r", "50");
 }
 
 var SPECircle = d3.select("#speCircle");
