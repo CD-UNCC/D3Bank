@@ -3,15 +3,16 @@
 <meta charset="utf-8">
 <style>
 #wellfargo{
-  position: absolute;
-  left: 750px;
-  bottom: 35px;
+  position: relative;
+  left: 557pt;
+  top: 195pt;
 }
 html, body {
             margin: 0px;
             padding: 0px;
             height: 100%;
             width: 100%;
+            overflow: hidden;
         }
 body {  
   background: linear-gradient(to right,  #8A0808 0%, #8A0808 70%, black 50%, black 100%);
@@ -261,7 +262,7 @@ var tip = d3.tip()
   .attr('class', 'd3-tip')
   .offset([-10, 0])
   .html(function(d) {
-    return "<strong><font size='20'<align = 'right'># Records in "+ d.name + " :</font></strong> <span style='color:red'><font size='20'<align = 'right'>" + d.size + "</span></align></font>";
+    return "<strong><font size='10'<align = 'right'># Records in "+ d.name + " :</font></strong> <span style='color:red'><font size='20'<align = 'right'>" + d.size + "</span></align></font>";
   }); 
 var width = innerWidth-500,
     height = innerHeight-300,
@@ -302,8 +303,8 @@ function back(){
 <div id = "wellfargo">
   <img src ="images/wellfargo.png" height = "130" width ="300" onclick = back()>
 </div>
-<svg height= "400" width ="1280">
-<line x1="0" y1="350" x2="1280" y2="350" style="stroke:#FFBF00;stroke-width:2" />
+<svg height= "205" width ="1280">
+<line x1="0" y1="200" x2="1280" y2="200" style="stroke:#FFBF00;stroke-width:2" />
 
 </svg>
 
