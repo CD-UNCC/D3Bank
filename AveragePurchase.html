@@ -68,6 +68,11 @@ background: linear-gradient(to right,  #8A0808 0%, #8A0808 70%, black 50%, black
   left: 0;
 }
 
+#wellfargo{
+  position: absolute;
+  left: 750px;
+  bottom: 20px;
+}
 </style>
 <body>
 <div id = "wellsFargIcon">
@@ -79,7 +84,7 @@ background: linear-gradient(to right,  #8A0808 0%, #8A0808 70%, black 50%, black
 <div id = "moveBarChart">
 <script>
 
-var margin = {top: 50, right: 100, bottom: 50, left: 250},
+var margin = {top: 30, right: 100, bottom: 70, left: 250},
     width = 1200 - margin.left - margin.right,
     height = 500 - margin.top - margin.bottom;
 
@@ -152,7 +157,9 @@ function back(){
 
 </script>
 </div>
-
+<div id = "wellfargo">
+  <img src ="images/wellfargo.png" height = "130" width ="300" onclick = back()>
+</div>
 <svg height= "3" width ="1280">
 <line x1="0" y1="2" x2="1280" y2="2" style="stroke:#FFBF00;stroke-width:2" />
 
