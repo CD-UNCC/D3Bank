@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html>
+<head>
+ <link href="build/nv.d3.css" rel="stylesheet" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js" charset="utf-8"></script>
+    <script src="build/nv.d3.js"></script>
+    <script src="lib/stream_layers.js"></script>
+<link type="text/css" href="example.css" rel="stylesheet" />
+</head>
+<style>
+		text {
+            font: 12px sans-serif;
+            fill:#FFBF00;
+        }
+        svg {
+            
+        	
+            height: 550px;
+            width: 1280px;
+           }
+           html, body {
+            margin: 0px;
+            padding: 0px;
+            height: 100%;
+            width: 100%;
+        }
+ #pie{
+ 	position: absolute;
+ 	left:0px;
+ }
+
+body{
+
+background: linear-gradient(to right,  #8A0808 0%, #8A0808 70%, black 50%, black 100%);
+}
+#wellsFargIcon{
+  width: 50px;
+  height: 50px;
+}
+
+
+
+</style>
+<body>
+	
+<div id = "wellsFargIcon">
+<img src="http://gpecpartners.com/sites/default/files/WF_Logo-jpg-300x300.jpg", height="200", width="200" >
+</div>
+
+</div>
+<div id="pie">
+<svg id="test1" class="mypiechart"></svg>
+<script>
+    var testdata2 = [ 
+        {key: "Charity/Community Org", y: 12}, 
+        {key: "Student Loan Payments", y: 651.51}, 
+        {key: "Arts", y: 864.52}, 
+        {key: "Education", y: 814.72}, 
+        {key: "Other Business/Office", y: 597.27}     
+    ];
+  
+    var height = 0;
+    var width = 0;
+
+    nv.addGraph(function() {
+        var chart = nv.models.pieChart()
+            .x(function(d) { return d.key})
+            .y(function(d) { return d.y })
+            .width(width)
+            .height(height);
+
+        d3.select("#test1")
+            .datum(testdata2)
+            .transition().duration(1200)
+            .attr('width', width)
+            .attr('height', height)
+            .call(chart);
+
+        return chart;
+    });
+
+    nv.addGraph(function() {
+        var chart = nv.models.pieChart()
+            .x(function(d) { return d.key })
+            .y(function(d) { return d.y })
+            //.labelThreshold(.08)
+            //.showLabels(false)
+            .color(d3.scale.category20().range().slice(8))
+            .growOnHover(false)
+            .tooltipContent(function(key, y, e, graph) {
+                return '<h3 style="padding: 5px; background-color: '
+                        + e.color + '"><strong>Yo, the value is</strong></h3>'
+                        + '<p style="padding:5px;">' +  y + '</p>';
+            })
+            .width(width)
+            .height(height);
+        var is_disabled = false;
+        setInterval(function() {
+            chart.dispatch.changeState({disabled: {2: !is_disabled, 4: !is_disabled}});
+            is_disabled = !is_disabled;
+        }, 3000);
+
+        return chart;
+    });
+
+</script>
+</div>
+<svg >
+<line x1="0" y1="500" x2="1365" y2="500" style="stroke:#FFBF00;stroke-width:2" />
+
+</svg>
+</body>
+</html>
+
+	
