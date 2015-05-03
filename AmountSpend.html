@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<link href='animate.css' rel='stylesheet' type='text/css'>
 <meta charset="utf-8">
 <style>
 #wellfargo{
@@ -80,6 +81,7 @@ form {
 </div>
 <script src="http://d3js.org/d3.v3.min.js"></script>
 <script src="index.js"></script>
+
 <script>
 var tree = {
   name: "tree",
@@ -300,7 +302,8 @@ function back(){
   window.location = "index.html";
 }
 </script>
-<div id = "wellfargo">
+
+<div id = "wellfargo" class = "animated slideInLeft">
   <img src ="images/wellfargo.png" height = "130" width ="300" onclick = back()>
 </div>
 <svg height= "205" width ="1366">

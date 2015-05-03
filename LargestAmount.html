@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
  <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js" ></script>
+ <script type="text/javascript" src="jquery-1.11.2.js"></script>
+ <link href='animate.css' rel='stylesheet' type='text/css'>
 <style>
 #wellfargo{
   position: relative;
@@ -40,10 +42,10 @@ background:  #8A0808
   <script src="http://d3js.org/topojson.v1.min.js"></script>
   <script src="datamaps.usa.min.js"></script>
 <div id = "wellsFargIcon">
-<img src="http://gpecpartners.com/sites/default/files/WF_Logo-jpg-300x300.jpg", height="200", width="200" onclick = "back()" >
+<img src="http://gpecpartners.com/sites/default/files/WF_Logo-jpg-300x300.jpg", height="200", width="200" onclick = "animationClick('#img', 'slideInleft')" >
 </div>
 
- <div id="container1" style="position: relative; width: 750pt; max-height: 200pt;"></div>
+ <div id="container1" style="position: relative; width: 750pt; max-height: 200pt;" ></div>
  
      
      <script>
@@ -140,14 +142,28 @@ background:  #8A0808
       
       map.labels();
       
+    function animationClick(element, animation){
+      element = $(element);
+      element.click(
+        function() {
+          element.addClass('animated ' + animation);
+          //wait for animation to finish before removing classes
+          window.setTimeout( function(){
+              element.removeClass('animated ' + animation);
+          }, 2000);
+        }
+      );
+    };
+
   function back(){
-  
+    
   window.location = "index.html";
+  
 }
 </script>
 
-<div id = "wellfargo">
-  <img src ="images/wellfargo.png" height = "130" width ="300" onclick = back()>
+<div id = "wellfargo" class = "animated slideInLeft">
+  <img id = "img" src ="images/wellfargo.png" height = "130" width ="300" onclick = back()>
 </div>
 
 <svg height= "105" width ="1366" position = "relative">
