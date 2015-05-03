@@ -146,12 +146,12 @@ background:  #8A0808
     
 </script>
 
-<div id = "wellfargo" >
-  <img  src ="images/wellfargo.png" height = "130" width ="300")>
+<div id = "wellfargo" class = "wellfargo" >
+  <img  src ="images/wellfargo.png" height = "130" width ="300" class = "wellfargo">
 </div>
 <script type="text/javascript">
 $(document).ready(function(){
-    $('wellfargo').each(function() {
+    $('#wellfargo').each(function() {
         animationClick(this, 'slideInLeft');
     });
 });
@@ -167,7 +167,6 @@ function animationClick(element, animation){
   
         });
 }
-
   function back(){
    
   window.location = "index.html";
