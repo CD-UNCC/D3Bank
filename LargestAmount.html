@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
  <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js" ></script>
- <script type="text/javascript" src="jquery-1.11.2.js"></script>
+ <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
  <link href='animate.css' rel='stylesheet' type='text/css'>
 <style>
 #wellfargo{
@@ -143,7 +143,19 @@ background:  #8A0808
       map.labels();
       
       
-    function animationClick(element, animation){
+    
+</script>
+
+<div id = "wellfargo" >
+  <img  src ="images/wellfargo.png" height = "130" width ="300")>
+</div>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('wellfargo').each(function() {
+        animationClick(this, 'slideInLeft');
+    });
+});
+function animationClick(element, animation){
     element = $(element);
     element.click(
         function() {
@@ -157,20 +169,12 @@ background:  #8A0808
 }
 
   function back(){
-   $(document).ready(function(){
-    $('#wellfargo').each(function() {
-        animationClick(this, 'bounce');
-    });
-});
+   
   window.location = "index.html";
   
 }
+
 </script>
-
-<div id = "wellfargo" >
-  <img  src ="images/wellfargo.png" height = "130" width ="300" onclick = back()>
-</div>
-
 <svg height= "105" width ="1366" position = "relative">
 <line x1="0" y1="100" x2="1366" y2="100" style="stroke:#FFBF00;stroke-width:2" />
 
