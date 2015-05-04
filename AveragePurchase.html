@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8">
  <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js" ></script>
+ <script src="jquery-1.11.2.js"></script>
 <link href='animate.css' rel='stylesheet' type='text/css'>
 <style>
  html, body {
@@ -80,7 +81,7 @@ background: linear-gradient(to right,  #8A0808 0%, #8A0808 70%, black 50%, black
 </style>
 <body>
 <div id = "wellsFargIcon">
-<img src="http://gpecpartners.com/sites/default/files/WF_Logo-jpg-300x300.jpg", height="200", width="200" onclick = "back()" >
+<img src="http://gpecpartners.com/sites/default/files/WF_Logo-jpg-300x300.jpg", height="200", width="200" onclick = animationClick('#wellfargo','slideOutRight') >
 </div>
 
 <script src="http://d3js.org/d3.v3.min.js"></script>
@@ -154,15 +155,19 @@ function type(d) {
   d.Amount = +d.Amount;
   return d;
 }
-function back(){
-  
-  window.location = "index.html";
+function animationClick(element, animation){
+    element = $(element);
+            element.addClass('animated ' + animation);        
+            //wait for animation to finish before removing classes
+            window.setTimeout( function(){
+               window.location = "index.html" 
+            }, 1000); 
 }
 
 </script>
 </div>
 <div id = "wellfargo" class = "animated slideInLeft">
-  <img src ="images/wellfargo.png" height = "130" width ="300"  onclick = back()>
+  <img src ="images/wellfargo.png" height = "130" width ="300"  onclick = animationClick('#wellfargo','slideOutRight')>
 </div>
 
 <svg height= "55" width ="1366" position:"relative">
