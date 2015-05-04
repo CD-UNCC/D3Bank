@@ -5,6 +5,7 @@
 <!-- This uses the D3 Library  -->
  <script type="text/javascript" src="http://mbostock.github.com/d3/d3.js" ></script>
 <link href='http://fonts.googleapis.com/css?family=Trocchi' rel='stylesheet' type='text/css'>
+ <script src="jquery-1.11.2.js"></script>
 <link href='animate.css' rel='stylesheet' type='text/css'>
 </head>
 <style type="text/css">
@@ -20,16 +21,26 @@ body{
 
 }
 #wellsfargoIcon{
-	position: absolute;
-	left: 330px;
+	position: relative;
+	left: 270pt;
+
 }
 #A{
-	position: absolute;
-	top:100px;
+	position: relative;
+	top:30px;
 }
 #wellText{
 	animation-duration: 3s;
   animation-delay: 2s;
+}
+#svgController{
+	position: relative;
+	bottom: 70pt;
+	left:37pt;
+}
+#B{
+	position: relative;
+	bottom: 150pt;
 }
 </style>
 
@@ -80,9 +91,9 @@ body{
 
 
 </div>
-<div id = "B" >
-<svg width = "1366" height="3">
-	<line x1="0" y1="1" x2="1366" y2="1" style="stroke:#FFBF00;stroke-width:2" />
+<div id = "B">
+<svg width = "1366" height="105">
+	<line x1="0" y1="100" x2="1366" y2="100" style="stroke:#FFBF00;stroke-width:2" />
 </svg>
 </div>
 <script type="text/javascript">
@@ -104,8 +115,13 @@ AVGText1.on("click", AVGPage);
 
 
 function AVGPage(){
+element = $("#svgController");
+            element.addClass('animated zoomOut' );        
+            //wait for animation to finish before removing classes
+            window.setTimeout( function(){
+               window.location = "AveragePurchase.html";
+            }, 1000); 
 
-window.location = "AveragePurchase.html";
 }
 
 function AvgMouse(){
@@ -130,8 +146,13 @@ SPECircle.on("click",SPEPage);
 SPEText.on("click",SPEPage);
 SPEText1.on("click",SPEPage);
 function SPEPage(){
+element = $("#svgController");
+            element.addClass('animated zoomOut');        
+            //wait for animation to finish before removing classes
+            window.setTimeout( function(){
+               window.location = "pie.htm";
+            }, 1000); 
 
-window.location = "pie.htm";
 }
 
 function SpeMouse(){
@@ -167,8 +188,13 @@ LARGText2.on("click", LARGPage);
 LARGText3.on("click", LARGPage);
 
 function LARGPage(){
+element = $("#svgController");
+            element.addClass('animated zoomOut');        
+            //wait for animation to finish before removing classes
+            window.setTimeout( function(){
+              window.location = "LargestAmount.html";
+            }, 1000); 
 
-window.location = "LargestAmount.html";
 }
 function LargMouse(){
 LARGCircle.transition().duration(200).attr("r", "70");
@@ -199,8 +225,13 @@ AMOText1.on("click", AMOPage);
 AMOText2.on("click", AMOPage);
 
 function AMOPage(){
+element = $("#svgController");
+            element.addClass('animated zoomOut');        
+            //wait for animation to finish before removing classes
+            window.setTimeout( function(){
+               window.location = "AmountSpend.html";
+            }, 1000); 
 
-window.location = "AmountSpend.html";
 }
 
 function AmoMouse(){
